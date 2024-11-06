@@ -3,11 +3,14 @@ for(i=0; i<a.length; i++){
     a[i].addEventListener("click", function (){
         var buttonInnerHtml = this.innerHTML;
         playSound(buttonInnerHtml)
+        press(buttonInnerHtml)
     })
 }
 
 document.addEventListener("keydown",function(event){
     playSound(event.key)
+    press(event.key)
+
 });
 
 function playSound(key){
@@ -52,4 +55,11 @@ function playSound(key){
         default: console.log('wrong input')
     }
     
+}
+function press(currentKey){
+    var b=document.querySelector("."+currentKey)
+    b.classList.add("pressed")
+    setTimeout(function(){
+        b.classList.remove("pressed")
+    },100)
 }
